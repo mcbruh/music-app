@@ -8,11 +8,15 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
-            login!(@user)
-            redirect_to root_url
+            log_in_user!(@user)
+            redirect_to user_url(@user)
         else
             render json: @user.errors.full_messages
         end
+    end
+
+    def show
+        @user = User.find(params[:id])
     end
 
     private
