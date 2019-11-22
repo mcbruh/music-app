@@ -24,9 +24,19 @@
 #  <<: *default
 #  database: db/production.sqlite3
 
-development:
+default: &default
   adapter: postgresql
-  database: music_app_dev
-  host: localhost
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+
+development:
+  <<: *default
+  database: music_app_dev
+
+test:
+  <<: *default
+  database: music_app_test
+
+production:
+  <<: *default
+  database: music_app_production
