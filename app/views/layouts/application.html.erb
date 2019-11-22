@@ -10,6 +10,39 @@
   </head>
 
   <body>
+    <header>
+      <% if logged_in? %>
+        <ul>
+          <li>Logged in as: <%= current_user.email %></li>
+          <li>
+            <form action="<%= session_url %>" method="POST">
+              <input 
+                type="hidden"
+                name="authenticity_token"
+                value="<%= form_authenticity_token %>">
+              <input 
+                type="hidden"
+                name="_method"
+                value="delete">
+              <input type="submit" value="Log out">
+            </form>
+          </li>
+        </ul>
+      <% else %>
+        <ul>
+          <li>
+            <form action="<%= new_user_url %>" method="GET">
+              <input type="submit" value="Sign up">
+            </form>
+          </li>
+          <li>
+            <form action="<%= new_session_url %>" method="GET">  
+            <input type="submit" value="Log in">
+            </form>
+          </li>
+        </ul>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
