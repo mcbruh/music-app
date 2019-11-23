@@ -1,0 +1,4 @@
+<h1><%= @band.name %></h1>
+
+<%= button_to "edit", {:controller => :bands, :action => :edit}, :method => :get %>
+<%= button_to "delete", {:controller => :bands, :action => :destroy}, :method => :delete %>
