@@ -18,8 +18,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
-        render :show
+        @user = User.find_by(id: params[:id])
+        if @user.nil?
+            redirect_to new_user_url
+        else
+            render :show
+        end
     end
 
     private
