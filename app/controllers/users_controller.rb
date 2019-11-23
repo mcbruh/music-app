@@ -12,12 +12,14 @@ class UsersController < ApplicationController
             log_in_user!(@user)
             redirect_to user_url(@user)
         else
-            render json: @user.errors.full_messages
+            flash.now[:errors] = @user.errors.full_messages
+            render :new
         end
     end
 
     def show
         @user = User.find(params[:id])
+        render :show
     end
 
     private
