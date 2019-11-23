@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :bands, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :albums, only: :new
   end
-  resources :albums, only: [:index, :create, :show, :edit, :update, :destroy]
+  resources :albums, only: [:create, :show, :edit, :update, :destroy]
 end
