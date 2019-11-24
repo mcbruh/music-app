@@ -6,7 +6,25 @@
     <li>Year: <%= @album.year %></li>
     <br>
     <li>Type: <%= @album.live ? "Live" : "Studio" %></li>
+
+    <br>
+
+    <li>Tracks:
+    <ol>
+        <% @album.tracks.each do |track| %>
+            <li><a href="<%= track_url(track) %>"><%= track.title %></a></li>
+        <% end %>
+    </ol>
+    </li>
 </ul>
 
-<%= button_to "edit", {controller: :albums, action: :edit}, method: :get %>
-<%= button_to "delete", {controller: :albums, action: :destroy}, method: :delete %>
+<ul>
+    <li><a href="<%= edit_album_url(@album) %>">Edit album</a></li>
+    <li>
+        <form action="<%= album_url(@album) %> method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete album">
+        </form>
+    </li>
+</ul>
