@@ -1,4 +1,24 @@
 <h1><%= @band.name %></h1>
 
-<%= button_to "edit", {:controller => :bands, :action => :edit}, :method => :get %>
-<%= button_to "delete", {:controller => :bands, :action => :destroy}, :method => :delete %>
+<ul>
+    <li><a href="<%= edit_band_url(@band) %>">Edit band</a></li>
+    <li>
+        <form action="<%= band_url(@band) %>" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete band">
+        </form>
+    </li>
+</ul>
+
+
+<br><br>
+<h2>Albums</h2>
+<ol>
+    <% @band.albums.each do |album| %>
+        <li><a href="<%= album_url(album) %>"><%= album.name %></a></li>
+    <% end %>
+</ol>
+<ul>
+    <li><a href="<%= new_band_album_url(@band) %>">Add new album</a></li>
+</ul>
