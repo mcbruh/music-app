@@ -1,5 +1,6 @@
 <% action = (album.persisted? ? album_url(album) : albums_url) %>
 <% method = (album.persisted? ? "patch" : "post") %>
+<% submit_button = (album.persisted? ? "Update album!" : "Add album!") %>
 
 <form action="<%= action %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -32,4 +33,22 @@
         id="album_year"
         value=<%= album.year %>>
     <br><br>
+
+    <label for="album_live_f">Studio</label>
+    <input 
+        type="radio"
+        name="album[live]"
+        id="album_live_f"
+        <%= "checked" if !album.live %>>
+
+    <label for="album_live_t">Live</label>
+    <input 
+        type="radio"
+        name="album[live]"
+        id="album_live_t"
+        <%= "checked" if album.live %>>
+    <br><br>
+
+    <input type="submit" value="<%= submit_button %>">
+
 </form>
