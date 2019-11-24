@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
 
     def new
-        @track = Track.new
+        @track = Track.new(album_id: params[:album_id])
         render :new
     end
 
@@ -46,7 +46,7 @@ class TracksController < ApplicationController
     private
 
     def track_params
-        params.require(:track).permit(:title, :album_id, :ord, :bonus, :lyrics)
+        params.require(:track).permit(:album_id, :title, :ord, :bonus, :lyrics)
     end
 
 end

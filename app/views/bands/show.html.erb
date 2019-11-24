@@ -14,11 +14,18 @@
 
 <br><br>
 <h2>Albums</h2>
-<ol>
-    <% @band.albums.each do |album| %>
-        <li><a href="<%= album_url(album) %>"><%= album.name %></a></li>
-    <% end %>
-</ol>
+<% if @band.albums.length > 0 %>
+    <ol>
+        <% @band.albums.each do |album| %>
+            <li><a href="<%= album_url(album) %>"><%= album.title %></a></li>
+        <% end %>
+    </ol>
+<% else %>
+    <p>This band doesn't have any albums.</p>
+<% end %>
+
+<br>
+
 <ul>
     <li><a href="<%= new_band_album_url(@band) %>">Add new album</a></li>
 </ul>

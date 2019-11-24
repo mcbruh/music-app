@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
 
-    def new
-        @album = Album.new
+    def new       
+        @album = Album.new(band_id: params[:band_id])
         render :new
     end
 

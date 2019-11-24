@@ -3,7 +3,7 @@
 <% submit_button = (track.persisted? ? "Update track" : "Add new track") %>
 
 <form action="<%= action %>" method="POST">
-    <input type="hidden" name="authencity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="<%= method %>">
 
     <label for="track_title">Title</label>
@@ -51,11 +51,9 @@
     <br><br>
 
     <label for="track_lyrics">Lyrics</label>
-    <input 
-        type="textarea"
-        name="track[lyrics]"
-        id="track_lyrics"
-        value="<%= track.lyrics %>">
+    <textarea name="track[lyrics]" id="track_lyrics" cols="30" rows="10">
+        <%= track.lyrics %>
+    </textarea>
     <br><br>
 
     <input type="submit" value="<%= submit_button %>">
