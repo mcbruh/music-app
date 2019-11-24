@@ -1,5 +1,5 @@
 <% action = (album.persisted? ? album_url(album) : albums_url) %>
-<% method = (album.persisted? ? "patch" : "post") %>
+<% method = (album.persisted? ? "PATCH" : "POST") %>
 <% submit_button = (album.persisted? ? "Update album!" : "Add album!") %>
 
 <form action="<%= action %>" method="POST">
