@@ -1,1 +1,12 @@
 <h1><%= @album.title %></h1>
+
+<ul>
+    <li>By: <%= @album.band.name %></li>
+    <br>
+    <li>Year: <%= @album.year %></li>
+    <br>
+    <li>Type: <%= @album.live ? "Live" : "Studio" %></li>
+</ul>
+
+<%= button_to "edit", {controller: :albums, action: :edit}, method: :get %>
+<%= button_to "delete", {controller: :albums, action: :destroy}, method: :delete %>
