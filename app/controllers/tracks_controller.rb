@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
 
+    before_action :require_user!
+
     def new
         @track = Track.new(album_id: params[:album_id])
         render :new

@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+    before_action :require_user!
+
     def new       
         @album = Album.new(band_id: params[:band_id])
         render :new
