@@ -24,4 +24,17 @@
     </li>
 </ul>
 
+<h2>Notes</h2>
+
+<ul>
+    <% if @track.notes.empty? %>
+        <li>This track does not have any notes.</li>
+    <% else %>
+        <% @track.notes.each do |note| %>
+        <li><%= render 'notes/note', note: note %></li>
+        <% end %>
+    <% end %>
+</ul>
+
+<%= render 'notes/form', track: @track %>
 
