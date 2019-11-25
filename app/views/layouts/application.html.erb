@@ -36,6 +36,10 @@
         </nav>
       <% end %>
 
+      <% if flash[:errors] %>
+        <p><%= flash[:errors].join(", ") %></p>
+      <% end %>
+
         <%= yield %>
       </div>
   </body>
