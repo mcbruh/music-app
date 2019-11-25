@@ -8,5 +8,20 @@
     <% else %>
         <li>Track type: Bonus</li>
     <% end %>
-    
+    <br>
+    <li>Lyrics: <%= @track.lyrics %></li>
+
 </ul>
+
+<ul>
+    <li><a href="<%= edit_track_url(@track) %>">Edit track</a></li>
+    <li>
+        <form action="<%= track_url(@track) %>" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete track">
+        </form>
+    </li>
+</ul>
+
+
